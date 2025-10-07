@@ -25,6 +25,16 @@ db.connect(err => {
   }
 });
 
+app.get("/Users", async (req, res) => {
+  try {
+    const [rows] = await db.promise().query("SELECT * FROM users");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
 // ✅ Register endpoint
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
