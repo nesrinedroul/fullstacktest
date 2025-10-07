@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Build files
+client/build/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
