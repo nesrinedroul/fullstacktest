@@ -1,9 +1,6 @@
-build:
-  builder: nodejs
-  commands:
-    - cd server
-    - npm install
-
-start:
-  cmd: npm start
-  workdir: server
+services:
+  backend:
+    build:
+      builder: node
+      buildCommand: cd server && npm install
+      startCommand: cd server && node server.js
