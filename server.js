@@ -1,24 +1,20 @@
-const express = require('express');
-const cors = require('cors');
-const db = require('./db');
-require('dotenv').config();
+import mysql from "mysql2";
+import dotenv from "dotenv";
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+dotenv.config();
 
-// Route test
-app.get('/', (req, res) => {
-  res.send('Backend is running ✅');
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT
 });
 
-// Exemple de route vers la DB
-app.get('/users', (req, res) => {
-  db.query('SELECT * FROM users', (err, results) => {
-    if (err) return res.status(500).send(err);
-    res.json(results);
-  });
+db.connect((err) => {
+  if (err) {
+    console.error("❌ Erreur de connexion MySQL:", err);
+    return;
+  }
+  console.log("✅ MySQL connecté avec succès !");
 });
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
