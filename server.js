@@ -25,6 +25,10 @@ db.connect(err => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("🚀 Backend API is running successfully on Railway!");
+});
+
 app.get("/Users", async (req, res) => {
   try {
     const [rows] = await db.promise().query("SELECT * FROM users");
