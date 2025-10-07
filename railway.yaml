@@ -3,5 +3,5 @@ services:
   backend:
     build:
       builder: node
-      buildCommand: cd server && npm install
-      startCommand: cd server && node server.js
+      buildCommand: npm install
+      startCommand: npm start
