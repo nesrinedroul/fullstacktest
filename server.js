@@ -29,7 +29,7 @@ db.connect(err => {
 });
 
 // ✅ IMPORTANT PART:
-const PORT = process.env.PORT || 5000; // <--- use Railway's port if available
+const PORT = process.env.PORT || 3000; // <--- use Railway's port if available
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on port ${PORT}`);
 });
